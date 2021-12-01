@@ -14,6 +14,13 @@ export const theme = extendTheme({
       "100": "#01020C",
       "50": "#EEEEF2",
     },
+    pink: {
+      "200": "#D12E82",
+      "500": "#D12E82",
+    },
+    purple: {
+      "200": "#805AD5"
+    }
   },
   fonts: {
     heading: 'Roboto',
@@ -22,8 +29,18 @@ export const theme = extendTheme({
   styles: {
     global: {
       body: {
-        bg: 'gray.900',
-        color: 'gray.50'
+        bg: "gray.900",
+        color: "gray.50"
+      },
+      "&::-webkit-scrollbar": {
+        width: "4px",
+      },
+      "&::-webkit-scrollbar-track": {
+        width: "6px",
+      },
+      "&::-webkit-scrollbar-thumb": {
+        background: "pink.500",
+        borderRadius: "24px",
       },
     },
   },
