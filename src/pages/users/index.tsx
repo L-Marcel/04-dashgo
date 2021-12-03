@@ -8,7 +8,6 @@ import { getUsers, useUsers } from "../../services/hooks/useUsers";
 import { useState } from "react";
 import { queryClient } from "../../services/axios/query";
 import { api } from "../../services/axios/api";
-import { GetServerSideProps } from "next";
 
 type User = {
   id: string;
@@ -17,20 +16,9 @@ type User = {
   createdAt: string;
 };
 
-type GetUsersResponse = {
-  users: User[];
-  totalCount: number;
-};
-
-export default function UserList(props: GetUsersResponse) {
+export default function UserList() {
   const [page, setPage] = useState(1);
-
-  const { data, isLoading, isFetching, error } = useUsers(
-    page,
-    {
-      initialData: props
-    }
-  );
+  const { data, isLoading, isFetching, error } = useUsers(page);
 
   const isWideVersion = useBreakpointValue({
     base: false,
@@ -209,14 +197,4 @@ export default function UserList(props: GetUsersResponse) {
       </Flex>
     </Box>
   );
-};
-
-export const getServerSideProps: GetServerSideProps = async() => {
-  const data = await getUsers(1);
-  
-  return {
-    props: {
-      ...data
-    }
-  };
 };

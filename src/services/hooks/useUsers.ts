@@ -1,4 +1,4 @@
-import { useQuery, UseQueryOptions } from "react-query";
+import { useQuery } from "react-query";
 import { api } from "../axios/api";
 
 type User = {
@@ -11,10 +11,6 @@ type User = {
 type GetUsersResponse = {
   users: User[];
   totalCount: number;
-};
-
-interface UseUsersOptions extends UseQueryOptions {
-  initialData: GetUsersResponse;
 };
 
 export async function getUsers(page: number): Promise<GetUsersResponse> {
@@ -42,9 +38,8 @@ export async function getUsers(page: number): Promise<GetUsersResponse> {
   return { users, totalCount };
 };
 
-export function useUsers(page: number, { initialData }: UseUsersOptions) {
-  return useQuery<GetUsersResponse>(["users", page], () => getUsers(page), {
+export function useUsers(page: number) {
+  return useQuery(["users", page], () => getUsers(page), {
     staleTime: 1000 * 5,
-    initialData
   });
 };
