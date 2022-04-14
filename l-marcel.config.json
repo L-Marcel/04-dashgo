@@ -1,4 +1,5 @@
 {
+  "translatedDescription": "Aplicação criada na trilha do React.js usando o Next.js. Foi apresentado através dessa aplicação os conceitos de interface declarativa com o Chakra UI e Data Fetching com o React Query foram utilizados.",
   "technologies": [
     "Next.js",
     "React.js",
